@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const addRevealClasses = () => {
     const elements = [
       { selector: '.pain-card',         cls: 'reveal',       delays: [0, 0.1, 0.2, 0.3] },
-      { selector: '.service-card',      cls: 'reveal',       delays: [0, 0.1, 0.2, 0.3] },
+      { selector: '.sf-card',           cls: 'reveal',       delays: [0, 0.1, 0.2, 0.3, 0.4, 0.5] },
       { selector: '.pricing-card',      cls: 'reveal',       delays: [0, 0.1, 0.2] },
       { selector: '.testimonial-card',  cls: 'reveal',       delays: [0, 0.1, 0.2] },
       { selector: '.schedule-info',     cls: 'reveal-right', delays: [0, 0.1, 0.2] },
@@ -145,6 +145,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
   counters.forEach(c => counterObserver.observe(c));
 
+  // ---- TYPEWRITER EFFECT FOR HERO SUB ----
+  const heroSub = document.querySelector('.hero__sub');
+  if (heroSub) {
+    const childNodes = Array.from(heroSub.childNodes);
+    heroSub.innerHTML = '';
+    
+    function processNode(node, targetEl, callback) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        let text = node.textContent;
+        let i = 0;
+        function typeChar() {
+          if (i < text.length) {
+            targetEl.appendChild(document.createTextNode(text.charAt(i)));
+            i++;
+            setTimeout(typeChar, 15);
+          } else {
+            callback();
+          }
+        }
+        typeChar();
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        let clone = node.cloneNode(false);
+        targetEl.appendChild(clone);
+        let children = Array.from(node.childNodes);
+        
+        function processChildren(index) {
+          if (index < children.length) {
+            processNode(children[index], clone, () => processChildren(index + 1));
+          } else {
+            callback();
+          }
+        }
+        processChildren(0);
+      }
+    }
+    
+    function startTyping(index) {
+      if (index < childNodes.length) {
+        processNode(childNodes[index], heroSub, () => startTyping(index + 1));
+      }
+    }
+    
+    setTimeout(() => startTyping(0), 1000);
+  }
+
   // ---- PAIN CARD HOVER: Number highlight ----
   document.querySelectorAll('.pain-card').forEach(card => {
     card.addEventListener('mouseenter', () => {
@@ -167,12 +212,66 @@ document.addEventListener('DOMContentLoaded', () => {
       if (top <= 100) current = section.getAttribute('id');
     });
     navLinks.forEach(link => {
-      link.style.color = '';
+      link.classList.remove('active');
       if (link.getAttribute('href') === `#${current}`) {
-        link.style.color = 'var(--gold-light)';
+        link.classList.add('active');
       }
     });
   };
   window.addEventListener('scroll', highlightNav, { passive: true });
 
+  // ---- EXPANDED PORTFOLIO GALLERY ----
+  const expandedSection = document.getElementById('portfolioExpanded');
+  const expandedTitle = document.getElementById('expandedTitle');
+  const expandedDesc = document.getElementById('expandedDesc');
+  const expandedGrid = document.getElementById('expandedGrid');
+  const expandedClose = document.getElementById('expandedClose');
+
+  const openExpanded = (images, title, desc) => {
+    expandedTitle.textContent = title;
+    expandedDesc.textContent = desc || 'Không gian trưng bày đẳng cấp, được thiết kế chuyên biệt để làm nổi bật thương hiệu và tối ưu trải nghiệm khách hàng tại triển lãm.';
+    expandedGrid.innerHTML = '';
+    
+    images.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = title;
+      img.className = 'portfolio-expanded__item';
+      expandedGrid.appendChild(img);
+    });
+
+    expandedSection.style.display = 'block';
+    
+    setTimeout(() => {
+      expandedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  };
+
+  const closeExpanded = () => {
+    expandedSection.style.display = 'none';
+    expandedGrid.innerHTML = '';
+    
+    // Scroll back to portfolio header
+    const portfolioHeader = document.querySelector('.portfolio__header-horizontal');
+    if(portfolioHeader) {
+      portfolioHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  document.querySelectorAll('.gallery-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      try {
+        const images = JSON.parse(trigger.getAttribute('data-images'));
+        const title = trigger.getAttribute('data-title');
+        const desc = trigger.getAttribute('data-desc');
+        openExpanded(images, title, desc);
+      } catch (e) {
+        console.error("Lỗi khi parse danh sách ảnh: ", e);
+      }
+    });
+  });
+
+  expandedClose.addEventListener('click', closeExpanded);
+
+  // Cursor glow removed as requested by user
 });

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExpoElite - Content Management System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+    .glass-header {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body class="text-slate-800">
+
+  <!-- Header -->
+  <header class="glass-header sticky top-0 z-50 flex items-center justify-between px-8 py-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+        E
+      </div>
+      <div>
+        <h1 class="font-bold text-xl leading-tight">ExpoElite CMS</h1>
+        <p class="text-xs text-slate-500">Quản trị nội dung siêu tốc</p>
+      </div>
+    </div>
+    <div class="flex gap-3">
+      <button id="btnOpen" class="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium rounded-md transition-colors shadow-sm">
+        Mở file (index.html)
+      </button>
+      <button id="btnSave" disabled class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-medium rounded-md transition-colors shadow-sm">
+        Lưu thay đổi
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="max-w-5xl mx-auto px-8 py-10">
+    
+    <div id="welcomeState" class="text-center py-20">
+      <div class="w-20 h-20 bg-indigo-100 text-indigo-500 rounded-full flex items-center justify-center mx-auto mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      </div>
+      <h2 class="text-2xl font-bold mb-2">Chưa tải trang web</h2>
+      <p class="text-slate-500 mb-6">Vui lòng nhấn nút "Mở file" và chọn file <code>index.html</code> của dự án để bắt đầu chỉnh sửa.</p>
+      <button id="btnOpenBig" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors shadow-sm">
+        Chọn file index.html
+      </button>
+    </div>
+
+    <div id="editorState" class="hidden">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="text-2xl font-bold">Chỉnh sửa nội dung</h2>
+          <p class="text-slate-500">Mọi thay đổi sẽ được áp dụng ngay lập tức khi bạn nhấn Lưu.</p>
+        </div>
+      </div>
+      
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-64 shrink-0">
+          <nav class="flex flex-col gap-2" id="tabNav">
+            <!-- Tabs injected here -->
+          </nav>
+        </aside>
+        
+        <!-- Dynamic Form Container -->
+        <div class="flex-1 bg-white p-8 rounded-xl shadow-sm border border-slate-200">
+          <h3 id="currentTabTitle" class="text-xl font-bold text-slate-800 mb-6 pb-4 border-b border-slate-100">Chọn một mục để sửa</h3>
+          <div id="formContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Fields will be injected here by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    let fileHandle;
+    let htmlDoc;
+    const btnOpen = document.getElementById('btnOpen');
+    const btnOpenBig = document.getElementById('btnOpenBig');
+    const btnSave = document.getElementById('btnSave');
+    const welcomeState = document.getElementById('welcomeState');
+    const editorState = document.getElementById('editorState');
+    const formContainer = document.getElementById('formContainer');
+
+    // Grouping configuration
+    const GROUPS = {
+      'nav': 'Menu Điều hướng',
+      'hero': 'Trang chủ (Hero)',
+      'marquee': 'Dải chữ chạy',
+      'svc': 'Dịch vụ',
+      'services': 'Dịch vụ',
+      'port': 'Dự án (Portfolio)',
+      'price': 'Bảng giá',
+      'pricing': 'Bảng giá',
+      'testi': 'Đánh giá khách hàng',
+      'contact': 'Liên hệ',
+      'footer': 'Chân trang'
+    };
+
+    function getGroupName(id) {
+      for (const key in GROUPS) {
+        if (id.startsWith(key)) return GROUPS[key];
+      }
+      return 'Khác';
+    }
+
+    async function openFile() {
+      try {
+        if (window.showOpenFilePicker) {
+          [fileHandle] = await window.showOpenFilePicker({
+            types: [
+              {
+                description: 'HTML Files',
+                accept: {
+                  'text/html': ['.html'],
+                },
+              },
+            ],
+            multiple: false
+          });
+          const file = await fileHandle.getFile();
+          const contents = await file.text();
+          loadEditor(contents);
+        } else {
+          // Fallback for browsers without File System API
+          const input = document.createElement('input');
+          input.type = 'file';
+          input.accept = '.html';
+          input.onchange = e => {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.onload = (event) => loadEditor(event.target.result);
+            reader.readAsText(file);
+          };
+          input.click();
+        }
+      } catch (err) {
+        console.error(err);
+        if (err.name !== 'AbortError') {
+          alert('Không thể mở file. Lỗi: ' + err.message);
+        }
+      }
+    }
+
+    function loadEditor(htmlText) {
+      const parser = new DOMParser();
+      htmlDoc = parser.parseFromString(htmlText, 'text/html');
+      
+      const elements = htmlDoc.querySelectorAll('[data-cms-id]');
+      if (elements.length === 0) {
+        alert('Không tìm thấy trường nội dung nào có thể chỉnh sửa trong file này.');
+        return;
+      }
+
+      const tabNav = document.getElementById('tabNav');
+      tabNav.innerHTML = '';
+      formContainer.innerHTML = '';
+      
+      // Group elements
+      const grouped = {};
+      elements.forEach(el => {
+        const id = el.getAttribute('data-cms-id');
+        const type = el.getAttribute('data-cms-type') || 'text';
+        const group = getGroupName(id);
+        
+        if (!grouped[group]) grouped[group] = [];
+        grouped[group].push({ id, type, element: el });
+      });
+
+      let firstTab = true;
+
+      // Render Tabs
+      for (const groupName in grouped) {
+        const tabBtn = document.createElement('button');
+        tabBtn.className = 'text-left px-4 py-3 rounded-lg font-medium transition-colors ' + (firstTab ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-100');
+        tabBtn.textContent = groupName;
+        
+        tabBtn.onclick = () => {
+          // Reset all tabs active state
+          Array.from(tabNav.children).forEach(btn => {
+            btn.className = 'text-left px-4 py-3 rounded-lg font-medium transition-colors text-slate-600 hover:bg-slate-100';
+          });
+          tabBtn.className = 'text-left px-4 py-3 rounded-lg font-medium transition-colors bg-indigo-50 text-indigo-700';
+          renderFormGroup(groupName, grouped[groupName]);
+        };
+        
+        tabNav.appendChild(tabBtn);
+
+        if (firstTab) {
+          renderFormGroup(groupName, grouped[groupName]);
+          firstTab = false;
+        }
+      }
+
+      welcomeState.classList.add('hidden');
+      editorState.classList.remove('hidden');
+      btnSave.disabled = false;
+    }
+
+    function renderFormGroup(groupName, items) {
+      document.getElementById('currentTabTitle').textContent = groupName;
+      formContainer.innerHTML = '';
+      
+      items.forEach(item => {
+        const field = document.createElement('div');
+        
+        const label = document.createElement('label');
+        label.className = 'block text-sm font-semibold text-slate-700 mb-2';
+        label.textContent = item.id;
+        
+        let input;
+        if (item.type === 'html') {
+          field.className = 'col-span-1 md:col-span-2';
+          input = document.createElement('textarea');
+          input.rows = 3;
+          input.className = 'w-full px-4 py-2 mt-1 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all';
+          input.value = item.element.innerHTML.trim();
+        } else {
+          input = document.createElement('input');
+          input.type = 'text';
+          input.className = 'w-full px-4 py-2 mt-1 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all';
+          input.value = item.element.textContent.trim();
+        }
+
+        input.addEventListener('input', (e) => {
+          if (item.type === 'html') {
+            item.element.innerHTML = e.target.value;
+          } else {
+            item.element.textContent = e.target.value;
+          }
+        });
+
+        field.appendChild(label);
+        field.appendChild(input);
+        formContainer.appendChild(field);
+      });
+    }
+
+    async function saveFile() {
+      const newHtml = '<!DOCTYPE html>\n' + htmlDoc.documentElement.outerHTML;
+      
+      try {
+        if (fileHandle) {
+          const writable = await fileHandle.createWritable();
+          await writable.write(newHtml);
+          await writable.close();
+          alert('Đã lưu thành công! Hãy tải lại trang web để xem sự thay đổi.');
+        } else {
+          // Fallback download
+          const blob = new Blob([newHtml], { type: 'text/html' });
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = 'index.html';
+          a.click();
+          alert('File index.html mới đã được tải xuống. Hãy chép đè nó vào thư mục dự án của bạn.');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Lỗi khi lưu file: ' + err.message);
+      }
+    }
+
+    btnOpen.addEventListener('click', openFile);
+    btnOpenBig.addEventListener('click', openFile);
+    btnSave.addEventListener('click', saveFile);
+
+  </script>
+</body>
+</html>
