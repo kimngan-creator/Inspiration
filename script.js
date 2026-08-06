@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroVideo = document.getElementById("heroVideo");
   if (heroVideo) {
     if (window.innerWidth <= 768) {
-      heroVideo.src = "clip-mobile.mp4";
+      heroVideo.src = "clipdt.mp4";
     } else {
       heroVideo.src = "clip.mp4";
     }
