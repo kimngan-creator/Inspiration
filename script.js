@@ -274,4 +274,52 @@ document.addEventListener('DOMContentLoaded', () => {
   expandedClose.addEventListener('click', closeExpanded);
 
   // Cursor glow removed as requested by user
+  
+  // Testimonial Lightbox
+  const proofs = document.querySelectorAll('.testimonial-proof-card');
+  proofs.forEach(proof => {
+    proof.addEventListener('click', () => {
+      const imgEl = proof.querySelector('img');
+      if (!imgEl) return;
+      
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = '0';
+      overlay.style.left = '0';
+      overlay.style.width = '100vw';
+      overlay.style.height = '100vh';
+      overlay.style.backgroundColor = 'rgba(0,0,0,0.85)';
+      overlay.style.zIndex = '9999';
+      overlay.style.display = 'flex';
+      overlay.style.alignItems = 'center';
+      overlay.style.justifyContent = 'center';
+      overlay.style.cursor = 'zoom-out';
+      overlay.style.opacity = '0';
+      overlay.style.transition = 'opacity 0.3s ease';
+      
+      const img = document.createElement('img');
+      img.src = imgEl.src;
+      img.style.maxWidth = '90%';
+      img.style.maxHeight = '90%';
+      img.style.borderRadius = '12px';
+      img.style.boxShadow = '0 10px 40px rgba(0,0,0,0.5)';
+      img.style.transform = 'scale(0.95)';
+      img.style.transition = 'transform 0.3s ease';
+      
+      overlay.appendChild(img);
+      document.body.appendChild(overlay);
+      
+      // Trigger reflow for transition
+      setTimeout(() => {
+        overlay.style.opacity = '1';
+        img.style.transform = 'scale(1)';
+      }, 10);
+      
+      overlay.addEventListener('click', () => {
+        overlay.style.opacity = '0';
+        img.style.transform = 'scale(0.95)';
+        setTimeout(() => overlay.remove(), 300);
+      });
+    });
+  });
 });
