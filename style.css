@@ -324,6 +324,17 @@ ul { list-style: none; }
   object-fit: cover;
   transform: scale(1.25) translate(5%, -5%); /* Zoom more and shift to hide watermark completely */
 }
+.hero__video--mobile {
+  display: none;
+}
+@media (max-width: 768px) {
+  .hero__video--desktop {
+    display: none;
+  }
+  .hero__video--mobile {
+    display: block;
+  }
+}
 .hero__overlay {
   position: absolute;
   inset: 0;
