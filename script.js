@@ -4,6 +4,61 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // ---- MULTI-LANGUAGE SYSTEM ----
+  const langSwitcher = document.getElementById('langSwitcher');
+  const mobileLangSwitcher = document.getElementById('mobileLangSwitcher');
+
+  const applyLanguage = (lang) => {
+    window.cancelTypewriter = true; // Stop ongoing typewriter effect if language changes
+    if (!window.siteTranslations || !window.siteTranslations[lang]) return;
+    
+    const dict = window.siteTranslations[lang];
+    document.querySelectorAll('[data-cms-id]').forEach(el => {
+      const id = el.getAttribute('data-cms-id');
+      const type = el.getAttribute('data-cms-type');
+      const hoverId = el.getAttribute('data-cms-hover');
+
+      if (dict[id]) {
+        if (type === 'html') {
+          el.innerHTML = dict[id];
+        } else if (type === 'placeholder') {
+          el.placeholder = dict[id];
+        } else {
+          el.textContent = dict[id];
+        }
+      }
+      if (hoverId && dict[hoverId]) {
+        el.setAttribute('data-text', dict[hoverId]);
+      }
+    });
+
+    // Update switchers
+    if (langSwitcher) langSwitcher.value = lang;
+    if (mobileLangSwitcher) mobileLangSwitcher.value = lang;
+    
+    // Set document language
+    document.documentElement.lang = lang;
+  };
+
+  const setLanguage = (lang) => {
+    localStorage.setItem('user_lang', lang);
+    applyLanguage(lang);
+  };
+
+  // Check initial language, default to 'vi'
+  let savedLang = localStorage.getItem('user_lang');
+  if (!savedLang) {
+    savedLang = 'vi';
+    localStorage.setItem('user_lang', 'vi');
+  }
+  applyLanguage(savedLang);
+  window.cancelTypewriter = false; // Reset to false after initial application so typewriter can run
+
+  const handleSwitcher = (e) => {
+    setLanguage(e.target.value);
+  };
+  if (langSwitcher) langSwitcher.addEventListener('change', handleSwitcher);
+  if (mobileLangSwitcher) mobileLangSwitcher.addEventListener('change', handleSwitcher);
 
 
   // ---- NAVBAR: Scroll effect ----
@@ -156,6 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let text = node.textContent;
         let i = 0;
         function typeChar() {
+          if (window.cancelTypewriter) return; // Exit if language changed
           if (i < text.length) {
             targetEl.appendChild(document.createTextNode(text.charAt(i)));
             i++;

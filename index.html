@@ -23,6 +23,15 @@
         <li><a href="#dich-vu" data-cms-id="nav-link-2" data-cms-type="text">Dự án</a></li>
         <li><a href="#bang-gia" data-cms-id="nav-link-3" data-cms-type="text">Bảng giá</a></li>
         <li><a href="#lien-he" data-cms-id="nav-link-4" data-cms-type="text">Liên hệ</a></li>
+        
+        <!-- Language Switcher -->
+        <li class="nav__lang">
+          <select id="langSwitcher" class="lang-switcher">
+            <option value="vi">Tiếng Việt</option>
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+          </select>
+        </li>
       </ul>
       <a href="#lien-he" class="btn nav__cta" style="position:relative;">
         <span data-cms-id="nav-cta" data-cms-type="text">Nhận tư vấn</span></a>
@@ -32,10 +41,17 @@
     </div>
     <div class="nav__mobile" id="navMobile">
       <ul>
-        <li><a href="#ve-chung-toi" class="nav__mobile-link">Về Chúng tôi</a></li>
-        <li><a href="#dich-vu" class="nav__mobile-link">Dịch vụ</a></li>
-        <li><a href="#bang-gia" class="nav__mobile-link">Bảng giá</a></li>
-        <li><a href="#lien-he" class="nav__mobile-link">Liên hệ</a></li>
+        <li><a href="#ve-chung-toi" class="nav__mobile-link" data-cms-id="nav-link-1" data-cms-type="text">Về Chúng tôi</a></li>
+        <li><a href="#dich-vu" class="nav__mobile-link" data-cms-id="nav-link-2" data-cms-type="text">Dự án</a></li>
+        <li><a href="#bang-gia" class="nav__mobile-link" data-cms-id="nav-link-3" data-cms-type="text">Bảng giá</a></li>
+        <li><a href="#lien-he" class="nav__mobile-link" data-cms-id="nav-link-4" data-cms-type="text">Liên hệ</a></li>
+        <li class="nav__mobile-lang">
+          <select id="mobileLangSwitcher" class="lang-switcher">
+            <option value="vi">Tiếng Việt</option>
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+          </select>
+        </li>
       </ul>
     </div>
   </nav>
@@ -51,34 +67,16 @@
       <div class="hero__overlay"></div>
     </div>
     <div class="hero__content container">
-      <div class="hero__tag" data-cms-id="hero-tag" data-cms-type="text">Dịch vụ thiết kế &amp; thi công gian hàng triển lãm chuyên nghiệp</div>
       <h1 class="hero__heading">
-        <span class="hero__heading-line line-1" data-text="GIAN HÀNG">THIẾT KẾ</span>
-        <span class="hero__heading-line line-2" data-text="NỔI BẬT —">THI CÔNG —</span>
+        <span class="hero__heading-line line-1" data-text="GIAN HÀNG" data-cms-id="hero-head-1" data-cms-hover="hero-head-1-hover">THIẾT KẾ</span>
+        <span class="hero__heading-line line-2" data-text="NỔI BẬT —" data-cms-id="hero-head-2" data-cms-hover="hero-head-2-hover">THI CÔNG —</span>
         <br>
-        <span class="hero__heading-line line-3" data-text="THƯƠNG HIỆU">GIAN HÀNG</span>
-        <span class="hero__heading-line line-4" data-text="TỎA SÁNG.">TRIỂN LÃM.</span>
+        <span class="hero__heading-line line-3" data-text="THƯƠNG HIỆU" data-cms-id="hero-head-3" data-cms-hover="hero-head-3-hover">GIAN HÀNG</span>
+        <span class="hero__heading-line line-4" data-text="TỎA SÁNG." data-cms-id="hero-head-4" data-cms-hover="hero-head-4-hover">TRIỂN LÃM.</span>
       </h1>
       <p class="hero__sub" data-cms-id="hero-sub" data-cms-type="html">Giúp doanh nghiệp sở hữu gian hàng triển lãm nổi bật <br>
         <strong>thu hút đám đông, tạo ấn tượng khó quên</strong>, và mở ra nhiều cơ hội hợp tác giá trị.</p>
-      <div class="hero__bottom-row">
-        <div class="hero__stats">
-          <div class="stat">
-            <span class="stat__num" data-cms-id="hero-stat-1-num" data-cms-type="text">100<span class="stat__plus">+</span></span>
-            <span class="stat__label" data-cms-id="hero-stat-1-label" data-cms-type="text">Dự án/năm</span>
-          </div>
-          <div class="stat__divider"></div>
-          <div class="stat">
-            <span class="stat__num" data-cms-id="hero-stat-2-num" data-cms-type="text">98<span class="stat__plus">%</span></span>
-            <span class="stat__label" data-cms-id="hero-stat-2-label" data-cms-type="text">Khách hàng hài lòng và hợp tác trở lại</span>
-          </div>
-          <div class="stat__divider"></div>
-          <div class="stat">
-            <span class="stat__num" data-cms-id="hero-stat-3-num" data-cms-type="text">20<span class="stat__plus">+</span></span>
-            <span class="stat__label" data-cms-id="hero-stat-3-label" data-cms-type="text">Các tỉnh thành</span>
-          </div>
-        </div>
-      </div>
+
     </div>
     <div class="hero__scroll-hint">
       <span>SCROLL</span>
@@ -91,7 +89,7 @@
   <section class="services-full" id="dich-vu-toan-dien">
     <div class="container">
       <div class="services-full__header text-center">
-        <p class="section-eyebrow">Giải pháp toàn diện</p>
+        <p class="section-eyebrow" data-cms-id="services-eyebrow">Giải pháp toàn diện</p>
         <h2 class="section-heading" data-cms-id="services-heading" data-cms-type="html">ĐỒNG HÀNH CÙNG DOANH NGHIỆP <span class="text-gold">TỪ A-Z</span></h2>
         <p class="services-full__desc" data-cms-id="services-desc" data-cms-type="text">Inspiration giúp doanh nghiệp tham gia triển lãm đơn giản hơn, tiết kiệm thời gian và cực kì hiệu quả với các dịch vụ</p>
       </div>
@@ -222,8 +220,8 @@
         <div class="portfolio-item gallery-trigger" data-title="Gian tiêu chuẩn" data-images="[&quot;hinh/Gian tiêu chuẩn/1785140709452_5071751212619009197_5071751212619009197_22b15c025b85e06e4e5a9e4055ca2fde.jpg&quot;,&quot;hinh/Gian tiêu chuẩn/1785140858319_5071751212619009197_5071751212619009197_d4f18dbd088f889904dc96582e2d74ba.jpg&quot;,&quot;hinh/Gian tiêu chuẩn/1785140858332_5071751212619009197_5071751212619009197_4ffe7274d83b76197b8a2ac88c3aff9a.jpg&quot;,&quot;hinh/Gian tiêu chuẩn/702107507_122262848816142468_5025404988056895937_n.jpg&quot;,&quot;hinh/Gian tiêu chuẩn/702684820_122262847898142468_8712683944473807164_n.jpg&quot;,&quot;hinh/Gian tiêu chuẩn/702764630_122262848864142468_3590391247713385681_n.jpg&quot;,&quot;hinh/Gian tiêu chuẩn/703665771_122262848012142468_6385698554884380573_n.jpg&quot;,&quot;hinh/Gian tiêu chuẩn/z7016535498536_b225894cbdb819cc51b966825316e6b6.jpg&quot;,&quot;hinh/Gian tiêu chuẩn/z7163195486040_692a0fc6e650f30c41d9e4621616ab30.jpg&quot;,&quot;hinh/Gian tiêu chuẩn/z7212170278550_ab701bec5cf54919b3467c37024adecb.jpg&quot;,&quot;hinh/Gian tiêu chuẩn/z7215148633231_a2261cdf9bc605f58ce085248730479a.jpg&quot;,&quot;hinh/Gian tiêu chuẩn/z7232420851822_d377bc231928fae15df3f3c640ef3cac.jpg&quot;,&quot;hinh/Gian tiêu chuẩn/z7286924588448_1a11c7e1381c7e522e454a51e51bad53.jpg&quot;,&quot;hinh/Gian tiêu chuẩn/z7446326333287_b26ee9d0196ea9cc936fd493797b4926.jpg&quot;]">
           <img src="hinh/Gian tiêu chuẩn/1785140709452_5071751212619009197_5071751212619009197_22b15c025b85e06e4e5a9e4055ca2fde.jpg" alt="Gian tiêu chuẩn">
           <div class="portfolio-item__overlay">
-            <span class="portfolio-item__tag">Tổng hợp từ nhiều triển lãm</span>
-            <h3>Tổng hợp các gian tiêu chuẩn</h3>
+            <span class="portfolio-item__tag" data-cms-id="port-1-tag" data-cms-type="text">Tổng hợp từ nhiều triển lãm</span>
+            <h3 data-cms-id="port-1-title" data-cms-type="text">Tổng hợp các gian tiêu chuẩn</h3>
           </div>
         </div>
         <div class="portfolio-item gallery-trigger" data-title="HAWA2027" data-images="[&quot;hinh/HAWA2027/z7995223694881_495b56ccc9e863984ebee9f47b4f3fb2.jpg&quot;,&quot;hinh/HAWA2027/z7995223757900_0265d6b8b7405060606ea25d2fe3a50b.jpg&quot;,&quot;hinh/HAWA2027/z7995223872289_edac3ae1e061534334d020a4e07b6118.jpg&quot;]">
@@ -313,7 +311,7 @@
       </div>
 
       <div class="portfolio__cta">
-        <a href="#lien-he" class="btn btn--primary" id="portfolio-cta">Đặt lịch tư vấn ngay</a>
+        <a href="#lien-he" class="btn btn--primary" id="portfolio-cta" data-cms-id="btn-consult" data-cms-type="text">Đặt lịch tư vấn ngay</a>
       </div>
     </div>
   </section>
@@ -325,10 +323,10 @@
   <section class="pricing" id="bang-gia">
     <div class="container">
       <div class="pricing__header">
-        <p class="section-eyebrow">Chi phí đầu tư</p>
+        <p class="section-eyebrow" data-cms-id="pricing-eyebrow">Chi phí đầu tư</p>
         <h2 class="section-heading" data-cms-id="pricing-heading" data-cms-type="html">TỐI ƯU HÓA CHI PHÍ,<br>
           <span class="text-gold">PHÙ HỢP NGÂN SÁCH</span></h2>
-        <p class="pricing__sub">Mọi dự án đều được báo giá chi tiết trước khi ký hợp đồng. Chúng tôi luôn nỗ lực để tìm ra những giải pháp tốt nhất tối ưu ngân sách cho khách hàng.</p>
+        <p class="pricing__sub" data-cms-id="pricing-sub" data-cms-type="text">Mọi dự án đều được báo giá chi tiết trước khi ký hợp đồng. Chúng tôi luôn nỗ lực để tìm ra những giải pháp tốt nhất tối ưu ngân sách cho khách hàng.</p>
       </div>
       <div class="pricing__grid pricing__grid--two">
         <!-- Gói 1: Gian tiêu chuẩn -->
@@ -343,18 +341,18 @@
             </div>
           </div>
           <ul class="pricing-card__features">
-            <li><span class="check">✓</span> Thiết kế &amp; trang trí vách gian hàng</li>
-            <li><span class="check">✓</span> Thiết kế và in ấn standee, poster</li>
-            <li><span class="check">✓</span> Cung cấp nhân sự (PG, PB, MC)</li>
-            <li><span class="check">✓</span> Hỗ trợ setup &amp; tháo dỡ</li>
-            <li><span class="check">✓</span> Cho thuê vật tư triển lãm</li>
+            <li><span class="check">✓</span> <span data-cms-id="price-1-feat-1" data-cms-type="text">Thiết kế &amp; trang trí vách gian hàng</span></li>
+            <li><span class="check">✓</span> <span data-cms-id="price-1-feat-2" data-cms-type="text">Thiết kế và in ấn standee, poster</span></li>
+            <li><span class="check">✓</span> <span data-cms-id="price-1-feat-3" data-cms-type="text">Cung cấp nhân sự (PG, PB, MC)</span></li>
+            <li><span class="check">✓</span> <span data-cms-id="price-1-feat-4" data-cms-type="text">Hỗ trợ setup &amp; tháo dỡ</span></li>
+            <li><span class="check">✓</span> <span data-cms-id="price-1-feat-5" data-cms-type="text">Cho thuê vật tư triển lãm</span></li>
           </ul>
-          <a href="#lien-he" class="btn btn--outline btn--full" id="price-basic-cta">Nhận báo giá</a>
+          <a href="#lien-he" class="btn btn--outline btn--full" id="price-basic-cta" data-cms-id="btn-quote" data-cms-type="text">Nhận báo giá</a>
         </div>
         
         <!-- Gói 2: Gian đất trống -->
         <div class="pricing-card pricing-card--featured" id="price-2">
-          <div class="pricing-card__badge">Được chọn nhiều nhất</div>
+          <div class="pricing-card__badge" data-cms-id="pricing-badge" data-cms-type="text">Được chọn nhiều nhất</div>
           <div class="pricing-card__top">
             <h3 data-cms-id="price-2-title" data-cms-type="text">Gian đất trống</h3>
             <p class="pricing-card__sub" data-cms-id="price-2-sub" data-cms-type="text">Dành cho mặt bằng trống, cần thiết kế và thi công từ A-Z</p>
@@ -365,14 +363,14 @@
             </div>
           </div>
           <ul class="pricing-card__features">
-            <li><span class="check">✓</span> Thiết kế 3D độc quyền theo thương hiệu</li>
-            <li><span class="check">✓</span> Tư vấn vật liệu &amp; giải pháp tối ưu</li>
-            <li><span class="check">✓</span> Thi công trọn gói từ sàn đến trần</li>
-            <li><span class="check">✓</span> Cung cấp thiết bị (LED, âm thanh, ánh sáng)</li>
-            <li><span class="check">✓</span> Hỗ trợ làm việc với BTC</li>
-            <li><span class="check">✓</span> Lên ý tưởng hoạt động thu hút khách</li>
+            <li><span class="check">✓</span> <span data-cms-id="price-2-feat-1" data-cms-type="text">Thiết kế 3D độc quyền theo thương hiệu</span></li>
+            <li><span class="check">✓</span> <span data-cms-id="price-2-feat-2" data-cms-type="text">Tư vấn vật liệu &amp; giải pháp tối ưu</span></li>
+            <li><span class="check">✓</span> <span data-cms-id="price-2-feat-3" data-cms-type="text">Thi công trọn gói từ sàn đến trần</span></li>
+            <li><span class="check">✓</span> <span data-cms-id="price-2-feat-4" data-cms-type="text">Cung cấp thiết bị (LED, âm thanh, ánh sáng)</span></li>
+            <li><span class="check">✓</span> <span data-cms-id="price-2-feat-5" data-cms-type="text">Hỗ trợ làm việc với BTC</span></li>
+            <li><span class="check">✓</span> <span data-cms-id="price-2-feat-6" data-cms-type="text">Lên ý tưởng hoạt động thu hút khách</span></li>
           </ul>
-          <a href="#lien-he" class="btn btn--primary btn--full" id="price-pro-cta">Nhận báo giá</a>
+          <a href="#lien-he" class="btn btn--primary btn--full" id="price-pro-cta" data-cms-id="btn-quote" data-cms-type="text">Nhận báo giá</a>
         </div>
       </div>
 
@@ -382,7 +380,7 @@
         <div class="offer-banner__content" data-cms-id="pricing-offer" data-cms-type="html">
           <strong>Ưu đãi đặc biệt:</strong> Miễn phí thiết kế cho những khách hàng ký hợp đồng sớm!
         </div>
-        <a href="#lien-he" class="btn btn--primary" id="offer-cta">Đặt chỗ ngay</a>
+        <a href="#lien-he" class="btn btn--primary" id="offer-cta" data-cms-id="btn-book-now" data-cms-type="text">Đặt chỗ ngay</a>
       </div>
     </div>
   </section>
@@ -414,51 +412,51 @@
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Automatic.jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Automatic</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Automatic</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Beauty Summit 2026 (2).jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Beauty Summit 2026</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Beauty Summit 2026</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Beauty Summit 2026.jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Beauty Summit 2026</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Beauty Summit 2026</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Beauty Summit.jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Beauty Summit</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Beauty Summit</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Saigontex 2026 (2).jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Saigontex 2026</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Saigontex 2026</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Saigontex 2026.jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Saigontex 2026</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Saigontex 2026</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Shoes & Leather (2).jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Shoes & Leather</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Shoes & Leather</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Shoes & Leather 2026.jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Shoes & Leather 2026</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Shoes & Leather 2026</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Sourcing 2025.jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Sourcing 2025</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Sourcing 2025</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Vilog 2026 (2).jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Vilog 2026</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Vilog 2026</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Vilog 2026 (3).jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Vilog 2026</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Vilog 2026</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Vilog 2026.jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Vilog 2026</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Vilog 2026</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tổ chức sự kiện (2).jpg" alt="Feedback"></div>
@@ -488,51 +486,51 @@
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Automatic.jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Automatic</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Automatic</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Beauty Summit 2026 (2).jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Beauty Summit 2026</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Beauty Summit 2026</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Beauty Summit 2026.jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Beauty Summit 2026</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Beauty Summit 2026</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Beauty Summit.jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Beauty Summit</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Beauty Summit</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Saigontex 2026 (2).jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Saigontex 2026</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Saigontex 2026</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Saigontex 2026.jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Saigontex 2026</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Saigontex 2026</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Shoes & Leather (2).jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Shoes & Leather</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Shoes & Leather</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Shoes & Leather 2026.jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Shoes & Leather 2026</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Shoes & Leather 2026</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Sourcing 2025.jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Sourcing 2025</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Sourcing 2025</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Vilog 2026 (2).jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Vilog 2026</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Vilog 2026</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Vilog 2026 (3).jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Vilog 2026</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Vilog 2026</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tham gia triển lãm Vilog 2026.jpg" alt="Feedback"></div>
-            <div class="proof-caption">Khách hàng tham gia triển lãm Vilog 2026</div>
+            <div class="proof-caption"><span data-cms-id="proof-prefix" data-cms-type="text">Khách hàng tham gia triển lãm </span>Vilog 2026</div>
           </div>
           <div class="testimonial-proof-card">
             <div class="proof-img-wrapper"><img src="nx/Khách hàng tổ chức sự kiện (2).jpg" alt="Feedback"></div>
@@ -566,10 +564,19 @@
           </p>
           <div class="contact__info">
             <div class="contact-item">
+              <span class="contact-item__icon">🌐</span>
+              <div>
+                <span class="contact-item__label">Facebook</span>
+                <span class="contact-item__value">
+                  <a href="https://www.facebook.com/InspirationMediaAdvertising" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">InspirationMediaAdvertising</a>
+                </span>
+              </div>
+            </div>
+            <div class="contact-item">
               <span class="contact-item__icon">📞</span>
               <div>
-                <span class="contact-item__label">Hotline</span>
-                <span class="contact-item__value">0862739275<br>0941335985</span>
+                <span class="contact-item__label">Hotline/Zalo/Wechat/Whatsapp</span>
+                <span class="contact-item__value">+84 862 739 275<br>+84 941 335 985</span>
               </div>
             </div>
             <div class="contact-item">
@@ -582,8 +589,8 @@
             <div class="contact-item">
               <span class="contact-item__icon">📍</span>
               <div>
-                <span class="contact-item__label">Vị trí</span>
-                <span class="contact-item__value">TPHCM, Hà Nội, Đà Nẵng</span>
+                <span class="contact-item__label" data-cms-id="contact-label-location" data-cms-type="text">Vị trí</span>
+                <span class="contact-item__value" data-cms-id="contact-value-location" data-cms-type="text">TPHCM, Hà Nội, Đà Nẵng</span>
               </div>
             </div>
           </div>
@@ -592,52 +599,52 @@
           <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
             <div class="form-row">
               <div class="form-group">
-                <label for="name">Họ và tên *</label>
-                <input type="text" id="name" name="name" placeholder="Nguyễn Văn A" required="">
+                <label for="name" data-cms-id="form-label-name" data-cms-type="text">Họ và tên *</label>
+                <input type="text" id="name" name="name" placeholder="Nguyễn Văn A" required="" data-cms-id="form-ph-name" data-cms-type="placeholder">
               </div>
               <div class="form-group">
-                <label for="company">Tên công ty *</label>
-                <input type="text" id="company" name="company" placeholder="Công ty ABC" required="">
+                <label for="company" data-cms-id="form-label-company" data-cms-type="text">Tên công ty *</label>
+                <input type="text" id="company" name="company" placeholder="Công ty ABC" required="" data-cms-id="form-ph-company" data-cms-type="placeholder">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="phone">Số điện thoại *</label>
-                <input type="tel" id="phone" name="phone" placeholder="0900 000 000" required="">
+                <label for="phone" data-cms-id="form-label-phone" data-cms-type="text">Số điện thoại *</label>
+                <input type="tel" id="phone" name="phone" placeholder="0900 000 000" required="" data-cms-id="form-ph-phone" data-cms-type="placeholder">
               </div>
               <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="email@company.com">
+                <label for="email" data-cms-id="form-label-email" data-cms-type="text">Email</label>
+                <input type="email" id="email" name="email" placeholder="email@company.com" data-cms-id="form-ph-email" data-cms-type="placeholder">
               </div>
             </div>
             <div class="form-group">
-              <label for="expo-name">Triển lãm dự kiến tham gia</label>
-              <input type="text" id="expo-name" name="expo-name" placeholder="Vd: Vietbuild 2026, Vietnam Expo...">
+              <label for="expo-name" data-cms-id="form-label-expo" data-cms-type="text">Triển lãm dự kiến tham gia</label>
+              <input type="text" id="expo-name" name="expo-name" placeholder="Vd: Vietbuild 2026, Vietnam Expo..." data-cms-id="form-ph-expo" data-cms-type="placeholder">
             </div>
             <div class="form-group">
-              <label for="budget">Ngân sách dự kiến</label>
+              <label for="budget" data-cms-id="form-label-budget" data-cms-type="text">Ngân sách dự kiến</label>
               <select id="budget" name="budget">
-                <option value="">-- Chọn mức ngân sách --</option>
-                <option value="1-5tr">1.000.000 – 5.000.000 đ</option>
-                <option value="5-20tr">5.000.000 – 20.000.000 đ</option>
-                <option value="20-50tr">20.000.000 – 50.000.000 đ</option>
-                <option value="50tr+">Trên 50.000.000 đ</option>
+                <option value="" data-cms-id="form-budget-opt-0" data-cms-type="text">-- Chọn mức ngân sách --</option>
+                <option value="1-5tr" data-cms-id="form-budget-opt-1" data-cms-type="text">1.000.000 – 5.000.000 đ</option>
+                <option value="5-20tr" data-cms-id="form-budget-opt-2" data-cms-type="text">5.000.000 – 20.000.000 đ</option>
+                <option value="20-50tr" data-cms-id="form-budget-opt-3" data-cms-type="text">20.000.000 – 50.000.000 đ</option>
+                <option value="50tr+" data-cms-id="form-budget-opt-4" data-cms-type="text">Trên 50.000.000 đ</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="message">Yêu cầu cụ thể</label>
-              <textarea id="message" name="message" rows="4" placeholder="Mô tả ngắn về gian hàng bạn mong muốn, diện tích, phong cách..."></textarea>
+              <label for="message" data-cms-id="form-label-message" data-cms-type="text">Yêu cầu cụ thể</label>
+              <textarea id="message" name="message" rows="4" placeholder="Mô tả ngắn về gian hàng bạn mong muốn, diện tích, phong cách..." data-cms-id="form-ph-message" data-cms-type="placeholder"></textarea>
             </div>
             <button type="submit" class="btn btn--primary btn--full btn--submit" id="submit-btn">
-              <span class="btn-text">Gửi yêu cầu tư vấn</span>
+              <span class="btn-text" data-cms-id="btn-submit" data-cms-type="text">Gửi yêu cầu tư vấn</span>
               <span class="btn-icon">→</span>
             </button>
-            <p class="form-note">🔒 Thông tin của bạn được bảo mật tuyệt đối. Chúng tôi phản hồi trong 24 giờ.</p>
+            <p class="form-note" data-cms-id="form-note" data-cms-type="text">🔒 Thông tin của bạn được bảo mật tuyệt đối. Chúng tôi phản hồi trong 24 giờ.</p>
           </form>
           <div class="form-success" id="formSuccess">
             <div class="success-icon">✓</div>
-            <h3>Đã nhận yêu cầu!</h3>
-            <p>Cảm ơn bạn đã liên hệ. Chúng tôi sẽ phản hồi trong vòng 24 giờ.</p>
+            <h3 data-cms-id="form-success-title" data-cms-type="text">Đã nhận yêu cầu!</h3>
+            <p data-cms-id="form-success-desc" data-cms-type="text">Cảm ơn bạn đã liên hệ. Chúng tôi sẽ phản hồi trong vòng 24 giờ.</p>
           </div>
         </div>
       </div>
@@ -673,11 +680,11 @@
         </div>
         <div class="footer__contact">
           <h4 data-cms-id="footer-col3-title" data-cms-type="text">Liên hệ ngay</h4>
-          <p data-cms-id="footer-phone" data-cms-type="text">📞 0862739275<br>📞 0941335985</p>
+          <p data-cms-id="footer-phone" data-cms-type="text" style="line-height: 1.8;">Hotline/Zalo/Wechat/Whatsapp:<br>+84 862 739 275<br>+84 941 335 985</p>
           <p data-cms-id="footer-email" data-cms-type="text">✉️ kimngan@inspiration.com.vn<br>✉️ quynhanh@inspiration.com.vn</p>
           <p data-cms-id="footer-address" data-cms-type="text">📍 TPHCM, Hà Nội, Đà Nẵng</p>
           <div class="footer__social">
-            <a href="#" class="social-link" id="footer-fb">FB</a>
+            <a href="https://www.facebook.com/InspirationMediaAdvertising" target="_blank" rel="noopener noreferrer" class="social-link" id="footer-fb">FB</a>
             <a href="#" class="social-link" id="footer-zalo">Zalo</a>
             <a href="#" class="social-link" id="footer-yt">YT</a>
           </div>
@@ -710,4 +717,26 @@
     </div>
   </a>
 
+  <!-- ===== WHATSAPP WIDGET ===== -->
+  <a href="https://wa.me/84862739275" target="_blank" rel="noopener noreferrer" class="whatsapp-widget" aria-label="Chat WhatsApp">
+    <div class="whatsapp-widget__ring"></div>
+    <div class="whatsapp-widget__circle">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="whatsapp-icon">
+        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3s19.9 53.7 22.7 57.4c2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+      </svg>
+    </div>
+  </a>
+
+  <!-- ===== WECHAT WIDGET ===== -->
+  <a href="weixin://dl/chat?0862739275" target="_blank" rel="noopener noreferrer" class="wechat-widget" aria-label="Chat WeChat">
+    <div class="wechat-widget__ring"></div>
+    <div class="wechat-widget__circle">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="wechat-icon">
+        <path d="M385.2 167.6c6.4 0 12.6 .3 18.8 1.1C387.4 90.3 303.3 32 207.7 32 100.5 32 13.5 104.8 13.5 197.4c0 53.4 29.6 99.8 75.3 131.1l-16.6 52.1 60.4-30.6c19.6 4.3 40.5 6.4 62.2 6.4 14.8 0 29.1-1.3 42.8-3.9-6.4-18.7-10.1-38.9-10.1-59.9 0-68.5 70.8-124.9 157.7-124.9zm-101.5-32.1c11.3 0 20.4 8.7 20.4 19.5 0 10.8-9.1 19.5-20.4 19.5-11.3 0-20.4-8.7-20.4-19.5 0-10.8 9.1-19.5 20.4-19.5zm-143.1 39c-11.3 0-20.4-8.7-20.4-19.5 0-10.8 9.1-19.5 20.4-19.5 11.3 0 20.4 8.7 20.4 19.5 0 10.8-9.1 19.5-20.4 19.5zm314.9 83c-66.2 0-119.8 45.4-119.8 101.4 0 56 53.6 101.4 119.8 101.4 14.6 0 28.7-2.3 42.1-6.5l45.4 22.8-12.4-38.6c34.1-23 55.7-56.9 55.7-93.5 0-56-53.6-101.4-119.8-101.4zm-40.4 51.5c8.6 0 15.6 6.5 15.6 14.6 0 8-7 14.6-15.6 14.6-8.6 0-15.6-6.5-15.6-14.6 0-8 7-14.6 15.6-14.6zm80.8 0c8.6 0 15.6 6.5 15.6 14.6 0 8-7 14.6-15.6 14.6-8.6 0-15.6-6.5-15.6-14.6 0-8 7-14.6 15.6-14.6z"/>
+      </svg>
+    </div>
+  </a>
+
+  <!-- Language Modal removed -->
+  <script src="translations.js"></script>
 </body></html>
